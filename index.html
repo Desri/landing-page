@@ -77,5 +77,38 @@
         .
         Please click "Join Meeting" 5 minutes before your scheduled appointment and wait for our officer to admit you into the virtual meeting room.
     </p>
+
+    <!-- Tambahkan sebelum tag </body> -->
+    <script>
+
+      // Ambil query string dari URL
+      const params = new URLSearchParams(window.location.search);
+
+      // Ambil nilai dari parameter "appointmentID"
+      const appointmentID = params.get('appointmentID');
+
+      // Tampilkan di konsol
+      console.log('Appointment ID:', appointmentID);
+
+      document.addEventListener("DOMContentLoaded", function () {
+        const button = document.querySelector("button");
+
+        button.addEventListener("click", function () {
+          fetch("https://jsonplaceholder.typicode.com/users/1")
+            .then((response) => {
+              if (!response.ok) {
+                throw new Error("Network response was not ok");
+              }
+              return response.json();
+            })
+            .then((data) => {
+              console.log("Fetched data:", data);
+            })
+            .catch((error) => {
+              console.error("Fetch error:", error);
+            });
+        });
+      });
+    </script>
   </body>
 </html>
